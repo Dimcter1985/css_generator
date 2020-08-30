@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="generator">
+      <span class="generator__title">border-radius</span>
+      <input class="generator__range" type="range" value="0" max="50">
+      <div class="generator__field">
+        <div class="generator__value">0%</div>
+      </div>
+  </div>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100vh;
+      width: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .generator {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .generator__title {
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .generator__range {
+      width: 50%;
+      -webkit-appearance: none;
+      outline: none;
+      height: 4px;
+      background-color: blue;
+      margin-bottom: 30px;
+    }
+
+    .generator__range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 1px solid grey;
+      cursor: pointer;
+    }
+
+    .generator__field {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .generator__value {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  </style>
+
+  <script>
+   document.querySelector('.generator__range').oninput = generator;
+
+   function generator() {
+     let br = document.querySelector('.generator__field');
+     let percent = document.querySelector('.generator__value');
+     
+     br.style.borderRadius = `${this.value}%`;
+     percent.innerHTML = `${this.value}%`;
+   }
+  </script>
+</body>
+</html>
